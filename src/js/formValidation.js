@@ -10,18 +10,6 @@ const allCity = document.getElementById("city")
 const checkbox1 = document.getElementById("checkbox1");
 const input = document.getElementsByClassName("text-control");
 
-/*********************************/
-
-
-
-
-
-
-
-
-
-
-/*********************/
 
 // VERIFICATION PRENOM && NOM
 const checkFirstName = () => {
