@@ -5,19 +5,27 @@ const last = document.getElementById("last");
 const email = document.getElementById("email");
 const quantity = document.getElementById("quantity");
 const birthdate = document.getElementById("birthdate");
-const city = document.getElementById("city")
-const allCity = document.querySelectorAll("#city .checkbox-input")
+const city = document.querySelectorAll("#city .checkbox-input")
+const allCity = document.getElementById("city")
 const checkbox1 = document.getElementById("checkbox1");
 const input = document.getElementsByClassName("text-control");
-
-
-
-
 
 /*********************************/
 
 
+const cityChecked = () => {
+    city.forEach(el => {
+        if(el.checked) {
+            allCity.setAttribute("data-error-visible", "false")
+            return
+        }else {
+            allCity.setAttribute("data-error-visible", "true")
+        }
+        console.log(el.checked);
+    })
+}
 
+console.log(allCity);
 
 
 
@@ -128,7 +136,7 @@ checkFields(last, checkLastName, "focusout")
 checkFields(email, checkEmail,"focusout")
 checkFields(quantity, checkTypeNumber,"focusout")
 checkFields(birthdate, checkBirthday,"focusout")
-// checkFields(city, checkCity,"focusout")
+checkFields(allCity, cityChecked,"click")
 checkFields(checkbox1, checkboxChecked,"change")
 
 // VERIFICATION DE TOUS LES CHAMPS
@@ -138,7 +146,7 @@ const checkAllFields = () => {
     checkEmail()
     checkTypeNumber()
     checkBirthday()
-    // checkCity()
+    cityChecked()
     checkboxChecked()
 }
 
@@ -149,6 +157,7 @@ const finalValidation = () => {
         checkEmail() === true &&
         checkTypeNumber() === true &&
         checkBirthday() === true &&
+        cityChecked() === true &&
         checkboxChecked() === true) {
             return true
     }
