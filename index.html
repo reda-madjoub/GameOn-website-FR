@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="./src/style/modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="./assets/img/Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
       
@@ -45,7 +45,7 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="./assets/img/bg_img.jpg" alt="img" />
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris
@@ -57,26 +57,30 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+            id="form"
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
-                class="formData">
-                <label>Prénom</label><br>
+                class="formData"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                data-error-visible="false">
+                <label for="first">Prénom</label><br>
                 <input
-                  class="text-control"
+                  class="text-control success"
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>Nom</label><br>
+                class="formData"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                data-error-visible="false">
+                <label for="last">Nom</label><br>
                 <input
+
                   class="text-control"
                   type="text"
                   id="last"
@@ -84,18 +88,21 @@
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>E-mail</label><br>
+                class="formData"
+                data-error="Vous devez entrez une adresse email valide."
+                data-error-visible="false">
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email"
                   id="email"
                   name="email"
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>Date de naissance</label><br>
+                class="formData"
+                data-error="Vous devez entrer votre date de naissance."
+                data-error-visible="false">
+                <label for="birthday">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
@@ -104,13 +111,18 @@
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                class="formData"
+                data-error="Pour le nombre de concours, une valeur numérique est saisie."
+                data-error-visible="false">
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <input class="text-control" id="quantity" name="quantity">
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
-                class="formData">
+                class="formData"
+                id="city"
+                data-error="Vous devez choisir une ville."
+                data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -180,14 +192,15 @@
               </div>
 
               <div
-                class="formData">
+                class="formData"
+                data-error="Vous devez vérifier que vous acceptez les termes et conditions."
+                data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -209,12 +222,23 @@
           </div>
         </div>
       </div>
+      <div class="container-modal-submit">
+        <div class="submitted-form">
+          <span class="close-modal-submit"></span>
+          <div class="modal-submit">
+            <p>Merci !<br> Votre réservation a été reçue.</p>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script src="./src/js/modal-submitted-form.js"></script>
+    <script src="./src/js/formValidation.js"></script>
+    <script src="./src/js/hamburgerMenu.js"></script>
+    <script src="./src/js/modal.js"></script>
   </body>
 </html>
