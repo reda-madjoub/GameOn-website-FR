@@ -13,22 +13,6 @@ const input = document.getElementsByClassName("text-control");
 /*********************************/
 
 
-const cityChecked = () => {
-    city.forEach(el => {
-        if(el.checked) {
-            allCity.setAttribute("data-error-visible", "false")
-            return
-        }else {
-            allCity.setAttribute("data-error-visible", "true")
-        }
-        console.log(el.checked);
-    })
-}
-
-console.log(allCity);
-
-
-
 
 
 
@@ -97,20 +81,15 @@ const checkBirthday = () => {
     return true;
 }
 
-
-
 // VALIDATION SELECTION VILLE
 const checkCity = () => {
-    allCity.forEach(element => {
-        if (element.checked === true) {
-            console.log(element.checked)
-            city.setAttribute("data-error-visible", "false")
-            return true
-        }else {
-            city.setAttribute("data-error-visible", "true")
-            return false
+    allCity.setAttribute("data-error-visible", "true")
+    for (let i = 0; i < city.length; i++) {
+        if(city[i].checked) {
+            allCity.setAttribute("data-error-visible", "false")
         }
-    });
+    }
+    return true
 }
 
 
@@ -136,7 +115,7 @@ checkFields(last, checkLastName, "focusout")
 checkFields(email, checkEmail,"focusout")
 checkFields(quantity, checkTypeNumber,"focusout")
 checkFields(birthdate, checkBirthday,"focusout")
-checkFields(allCity, cityChecked,"click")
+checkFields(allCity, checkCity,"change")
 checkFields(checkbox1, checkboxChecked,"change")
 
 // VERIFICATION DE TOUS LES CHAMPS
@@ -146,7 +125,7 @@ const checkAllFields = () => {
     checkEmail()
     checkTypeNumber()
     checkBirthday()
-    cityChecked()
+    checkCity()
     checkboxChecked()
 }
 
@@ -157,7 +136,7 @@ const finalValidation = () => {
         checkEmail() === true &&
         checkTypeNumber() === true &&
         checkBirthday() === true &&
-        cityChecked() === true &&
+        checkCity() === true &&
         checkboxChecked() === true) {
             return true
     }
@@ -177,6 +156,9 @@ form.addEventListener("submit", (e) => {
         checkAllFields()
     }
 });
+
+
+
 
 
 
