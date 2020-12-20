@@ -453,12 +453,12 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 120%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -714,6 +714,6 @@ footer {
 
 @media (max-width: 250px) {
   main {
-    height: 230vh;
+    height: 100vh;
   }
 }
