@@ -44,9 +44,7 @@ const checkEmail = () => {
 // VALIDATION NOMBRE CONCOURS
 const checkTypeNumber = () => {
     console.log();
-    if(quantity.value.trim().length === 0 ||
-       isNaN(quantity.value.trim()) === true ||
-       quantity.value.trim() < 0) {
+    if(quantity.value.trim().length === 0 || isNaN(quantity.value.trim()) === true ||quantity.value.trim() < 0) {
         quantity.parentElement.setAttribute("data-error-visible", "true")
         return false;
     }else {
@@ -71,9 +69,10 @@ const checkCity = () => {
     for (let i = 0; i < city.length; i++) {
         if(city[i].checked) {
             allCity.setAttribute("data-error-visible", "false")
+            return true
         }
     }
-    return true
+    return false
 }
 
 // VALIDATION CONDITION UTILISATIONS GENERALES (CHECKED)
